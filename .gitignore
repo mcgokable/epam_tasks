@@ -19,3 +19,5 @@ media/
 .media/
 
 db.sqlite3
+
+first_task.py

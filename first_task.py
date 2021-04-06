@@ -18,7 +18,6 @@ class DiskUtility:
                                    stderr=subprocess.PIPE)
         data, err = res.communicate()  # ждем завершения
         status = res.returncode
-        print('data', status)
         self.result_to_json(data, err.decode(), status)
 
     def result_to_json(self, data, err, status):
@@ -30,7 +29,7 @@ class DiskUtility:
         print(res_json)
 
 
-class ArgumentParser:
+class ArgParser:
     def __init__(self, description='No description'):
         self.parser = argparse.ArgumentParser(description=description)
         self.parser.add_argument('--human', help='Linux system command df -h',
@@ -41,7 +40,7 @@ class ArgumentParser:
 
 
 if __name__ == '__main__':
-    parser = ArgumentParser('My first CLI parser')
+    parser = ArgParser('My first CLI parser')
     args = parser.args
     disk_util = DiskUtility()
     if args.inode or args.human:
