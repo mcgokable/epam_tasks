@@ -25,12 +25,15 @@ class SshpassUtility:
         res = subprocess.Popen(com, stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)
         data, err = res.communicate()
-        if res.returncode == 0 and len(err) == 0:
-            print('---Command success---')
-            print()
-            print(data.decode())
-        else:
-            print(f'Something wrong. ReturnCode = {res.returncode}. Error: {err}')
+
+        # if res.returncode == 0 and len(err) == 0:
+        #     print('---Command success---')
+        #     print()
+        #     print(data.decode())
+        # else:
+        #     print(f'Something wrong. ReturnCode = {res.returncode}.'
+        #           f' Error: {err}')
+        #
         return data, err, res.returncode
 
     def send_alone_sshpass_command(self, *args):

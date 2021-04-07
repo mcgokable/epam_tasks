@@ -12,6 +12,11 @@ class NetworkUtility(SshpassUtility):
         self.host_2 = host_2
         self.sshpass_command = super().do_command()
 
+    def connect_sshpass(self, *args):
+        data, err, status = super().connect_sshpass(*args)
+        json_res = pir(data, err, status)
+        print(json_res)
+
 
 class IperfParser(ArgParser):
     def __init__(self):  # почему не могу отнаследоваться от родителя и добавить свои элементы?
